@@ -170,7 +170,7 @@ router.post('/verify', async ctx => {
 //  退出登录接口
 router.get('/exit', async ctx => {
   await ctx.logout();
-  if (!ctx.isAuthenticated) {  //  ctx.isAuthenticate: 登录状态
+  if (!ctx.isAuthenticated()) {  //  ctx.isAuthenticate(): 登录状态
     ctx.body = {
       code: 0
     };
@@ -183,7 +183,7 @@ router.get('/exit', async ctx => {
 
 //  获取用户信息
 router.get('/getUser', async ctx => {
-  if (ctx.isAuthenticated) {
+  if (ctx.isAuthenticated()) {
     const {username, email} = ctx.session.passport.user;
     ctx.body = {
       user: username,

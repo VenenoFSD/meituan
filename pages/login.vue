@@ -8,7 +8,7 @@
         <img src="//s0.meituan.net/bs/file/?f=fe-sso-fs:build/page/static/banner/www.jpg" width="480" height="370" alt="美团网">
       </div>
       <div class="form">
-        <h4 v-if="error" class="tips">{{error}}</h4>
+        <h4 v-show="error.length" class="tips">{{error}}</h4>
         <p>账号登录</p>
         <el-input v-model="username" prefix-icon="profile"></el-input>
         <el-input v-model="password" prefix-icon="password" type="password"></el-input>
@@ -23,20 +23,45 @@
 </template>
 
 <script>
+  import Crypto from 'crypto-js'
+
   export default {
     name: "login",
     layout: 'blank',
     data () {
       return {
-        error: false,
         username: '',
         password: '',
-        checked: ''
+        checked: '',
+        error: ''
       }
     },
     methods: {
       login () {
-
+        this.$axios.post('/users/signIn', {
+          username: this.username,
+          password: Crypto.MD5(this.password).toString()
+        }).then(({status, data}) => {
+          if (status === 200) {
+            if (data && data.code === 0) {
+              location.href = '/';
+            } else {
+              this.error = data.msg;
+            }
+          } else {
+            this.error = `服务器出错，错误码：${status}`;
+          }
+        });
+      }
+    },
+    watch: {
+      error (newErr) {
+        if (newErr) {
+          clearTimeout(this.errTimer);
+          this.errTimer = setTimeout(() => {
+            this.error = '';
+          }, 3000);
+        }
       }
     }
   }
