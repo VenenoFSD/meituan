@@ -8,10 +8,12 @@
       margin: 0 auto;
       padding: 10px 0;
       width: 980px;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
 
       .site-logo {
         display: inline-block;
-        width: 128px;
         width: 54px;
         height: 36px;
         text-indent: -9999px;
@@ -19,17 +21,22 @@
         background-image: url(//s0.meituan.net/bs/file/?f=fe-sso-fs:build/assets/sp-normal.2ee5c09.png);
       }
 
-      .login {
-        float: right;
-      }
-
       .bold {
         font-style: normal;
+      }
+
+      .el-button--mini {
+        padding: 5px 10px;
       }
     }
   }
 
-  > section {
+  .button-bg {
+    background-color: #2bb8aa;
+    border-color: #2bb8aa;
+  }
+
+  > .form {
     margin: 0 auto 30px;
     padding-top: 30px;
     width: 980px;
