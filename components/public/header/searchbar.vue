@@ -10,14 +10,14 @@
           <el-button type="primary"><i class="el-icon-search"></i></el-button>
           <dl class="hotPlace" v-show="isHotPlace">
             <dt>热门搜索</dt>
-            <dd v-for="item in hotPlace">{{item}}</dd>
+            <dd v-for="item in hotPlace">{{item.name}}</dd>
           </dl>
           <dl class="searchList" v-show="isSearchList">
-            <dd v-for="item in searchList">{{item}}</dd>
+            <dd v-for="item in searchList">{{item.name}}</dd>
           </dl>
         </div>
         <p class="suggest">
-          <a href="javascript:" v-for="item in suggest">{{item}}</a>
+          <a href="javascript:" v-for="item in hotPlace">{{item.name}}</a>
         </p>
         <ul class="nav">
           <li>
@@ -67,17 +67,8 @@
       return {
         isFocus: false,
         search: '',
-        hotPlace: ['a'],
-        searchList: ['a'],
-        suggest: ['a']
-      }
-    },
-    computed: {
-      isHotPlace () {
-        return this.isFocus && !this.search.length;
-      },
-      isSearchList () {
-        return this.isFocus && this.search.length;
+        hotPlace: [],
+        searchList: []
       }
     },
     methods: {
@@ -89,6 +80,46 @@
         this.timer = setTimeout(() => {
           this.isFocus = false;  //  延时提供点击事件
         }, 100);
+      },
+      debounce (func, delay) {
+        let timer = null;
+        return function (...args) {
+          if (timer) {
+            clearTimeout(timer);
+          }
+          timer = setTimeout(() => {
+            func.apply(this, args);
+          }, delay);
+        }
+      }
+    },
+    created () {
+      this.hotPlace = this.$store.state.home.hotPlace.slice(0, 4);
+      this.$watch('search', this.debounce((newVal) => {
+        if (!newVal.length) {
+          return;
+        }
+        (async () => {
+          this.searchList = [];
+          let city = this.$store.state.geo.position.city.replace('市', '');
+          let {status, data: {top}} = await this.$axios.get('/search/top', {
+            params: {
+              input: newVal,
+              city
+            }
+          });
+          if (status === 200) {
+            this.searchList = top.slice(0, 10);
+          }
+        })();
+      }, 200));
+    },
+    computed: {
+      isHotPlace () {
+        return this.isFocus && !this.search.length;
+      },
+      isSearchList () {
+        return this.isFocus && this.search.length;
       }
     }
   }
