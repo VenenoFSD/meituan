@@ -8,6 +8,15 @@
   min-height: 1000px;
   padding: 20px;
   .m-iselect {
+    .name {
+      margin-right: 20px;
+      font-size: 15px;
+    }
+
+    .r-name {
+      margin-left: 80px;
+    }
+
     .province {
       cursor: pointer;
       border-radius: 4px;
