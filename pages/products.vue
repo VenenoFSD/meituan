@@ -19,15 +19,6 @@
 
   export default {
     name: "products",
-    data () {
-      return {
-        keyword: '',
-        sort: [],
-        areas: [],
-        list: [],
-        point: []
-      }
-    },
     async asyncData (ctx) {  //  服务端请求数据【ssr渲染】，拿不到 this
       let city = ctx.store.state.geo.position.city;
       let keyword = ctx.query.keyword;
@@ -59,6 +50,14 @@
             scene: item.tag
           })),
           point: (pois.find(item => item.location).location || '').split(',')
+        }
+      } else {
+        return {
+          keyword,
+          sort: [],
+          areas: [],
+          list: [],
+          point: []
         }
       }
     },
