@@ -2,12 +2,14 @@
   <div class="search-panel">
     <el-row class="m-header-searchbar">
       <el-col :span="3" class="left">
-        <img src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png" alt="">
+        <nuxt-link to="/">
+          <img src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/logo.png" alt="">
+        </nuxt-link>
       </el-col>
       <el-col :span="15" class="center">
         <div class="wrapper">
           <el-input placeholder="搜索商家或地点" v-model="search" @focus="focus" @blur="blur"></el-input>
-          <el-button type="primary"><i class="el-icon-search"></i></el-button>
+          <el-button type="primary" @click="searchAll"><i class="el-icon-search"></i></el-button>
           <dl class="hotPlace" v-show="isHotPlace">
             <dt>热门搜索</dt>
             <dd v-for="item in hotPlace"><a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{item.name}}</a></dd>
@@ -80,6 +82,12 @@
         this.timer = setTimeout(() => {
           this.isFocus = false;  //  延时提供点击事件
         }, 100);
+      },
+      searchAll () {
+        if (!this.search.length) {
+          return;
+        }
+        location.href = `/products?keyword=${encodeURIComponent(this.search)}`;
       },
       debounce (func, delay) {
         let timer = null;

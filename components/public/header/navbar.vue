@@ -2,31 +2,31 @@
   <div class="m-nav">
     <ul class="nav">
       <li class="list">
-        <nuxt-link to="/a">我的美团</nuxt-link>
+        <nuxt-link to="/">我的美团</nuxt-link>
         <dl>
-          <dd><nuxt-link to="/a">我的订单</nuxt-link></dd>
-          <dd><nuxt-link to="/a">我的收藏</nuxt-link></dd>
-          <dd><nuxt-link to="/a">抵用券</nuxt-link></dd>
-          <dd><nuxt-link to="/a">账户设置</nuxt-link></dd>
+          <dd><nuxt-link to="/">我的订单</nuxt-link></dd>
+          <dd><nuxt-link to="/">我的收藏</nuxt-link></dd>
+          <dd><nuxt-link to="/">抵用券</nuxt-link></dd>
+          <dd><nuxt-link to="/">账户设置</nuxt-link></dd>
         </dl>
       </li>
       <li>
-        <nuxt-link to="/a">手机APP</nuxt-link>
+        <nuxt-link to="/">手机APP</nuxt-link>
       </li>
       <li class="list bd">
-        <nuxt-link to="/a">商家中心</nuxt-link>
+        <nuxt-link to="/">商家中心</nuxt-link>
         <dl>
-          <dd><nuxt-link to="/a">登录商家中心</nuxt-link></dd>
-          <dd><nuxt-link to="/a">美团智能收银</nuxt-link></dd>
-          <dd><nuxt-link to="/a">我想合作</nuxt-link></dd>
-          <dd><nuxt-link to="/a">手机免费开店</nuxt-link></dd>
-          <dd><nuxt-link to="/a">餐饮代理商招募</nuxt-link></dd>
-          <dd><nuxt-link to="/a">商家申请开票</nuxt-link></dd>
-          <dd><nuxt-link to="/a">免费合作美团排队</nuxt-link></dd>
+          <dd><nuxt-link to="/">登录商家中心</nuxt-link></dd>
+          <dd><nuxt-link to="/">美团智能收银</nuxt-link></dd>
+          <dd><nuxt-link to="/">我想合作</nuxt-link></dd>
+          <dd><nuxt-link to="/">手机免费开店</nuxt-link></dd>
+          <dd><nuxt-link to="/">餐饮代理商招募</nuxt-link></dd>
+          <dd><nuxt-link to="/">商家申请开票</nuxt-link></dd>
+          <dd><nuxt-link to="/">免费合作美团排队</nuxt-link></dd>
         </dl>
       </li>
       <li class="list site">
-        <nuxt-link to="/a">网站导航</nuxt-link>
+        <nuxt-link to="/">网站导航</nuxt-link>
         <div class="subContainer">
           <dl class="hotel">
             <dt>酒店旅游</dt>
@@ -67,27 +67,27 @@
             <dt>手机应用</dt>
             <dd>
               <a href="javascript:">
-                <img src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/appicons/meituan.png">
+                <img src="//s0.meituan.net/bs/fe-web-meituan/e5eeaef/img/appicons/meituan.png" alt="">
               </a>
             </dd>
             <dd>
               <a href="javascript:">
-                <img src="//s1.meituan.net/bs/fe-web-meituan/404d350/img/appicons/waimai.png">
+                <img src="//s1.meituan.net/bs/fe-web-meituan/404d350/img/appicons/waimai.png" alt="">
               </a>
             </dd>
             <dd>
               <a href="javascript:">
-                <img src="//s0.meituan.net/bs/fe-web-meituan/404d350/img/appicons/zhenguo.png">
+                <img src="//s0.meituan.net/bs/fe-web-meituan/404d350/img/appicons/zhenguo.png" alt="">
               </a>
             </dd>
             <dd>
               <a href="javascript:">
-                <img src="//s1.meituan.net/bs/fe-web-meituan/404d350/img/appicons/dianping.png">
+                <img src="//s1.meituan.net/bs/fe-web-meituan/404d350/img/appicons/dianping.png" alt="">
               </a>
             </dd>
             <dd>
               <a href="javascript:">
-                <img src="//s1.meituan.net/bs/fe-web-meituan/404d350/img/appicons/maoyan.png">
+                <img src="//s1.meituan.net/bs/fe-web-meituan/404d350/img/appicons/maoyan.png" alt="">
               </a>
             </dd>
           </dl>

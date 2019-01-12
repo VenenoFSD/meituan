@@ -12,17 +12,36 @@
           <h4>
             <img src="//s0.meituan.net/bs/fe-web-meituan/2d05c2b/img/avatar.jpg" alt="">
           </h4>
-          <p class="m-life-login-name">Hi！你好</p>
-          <p>
-            <nuxt-link to="/register">
-              <el-button round size="medium">注册</el-button>
-            </nuxt-link>
-          </p>
-          <p>
-            <nuxt-link to="/login">
-              <el-button round size="medium">立即登录</el-button>
-            </nuxt-link>
-          </p>
+          <div v-if="!userName.length">
+            <p class="m-life-login-name">Hi！你好</p>
+            <p>
+              <nuxt-link to="/register">
+                <el-button round size="medium">注册</el-button>
+              </nuxt-link>
+            </p>
+            <p>
+              <nuxt-link to="/login">
+                <el-button round size="medium">立即登录</el-button>
+              </nuxt-link>
+            </p>
+          </div>
+          <div class="login-user" v-else>
+            <p>欢迎您，{{userName}}</p>
+            <ul>
+              <li>
+                <i class="el-icon-tickets"></i>
+                <p>订单</p>
+              </li>
+              <li>
+                <i class="el-icon-star-on"></i>
+                <p>收藏</p>
+              </li>
+              <li>
+                <i class="el-icon-more"></i>
+                <p>更多</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -54,6 +73,17 @@
   import Slider from './slider'
   export default {
     name: "life",
+    data () {
+      return {
+        userName: ''
+      }
+    },
+    async mounted () {
+      const {status, data: {user}} = await this.$axios.get('/users/getUser');
+      if (status === 200) {
+        this.userName = user;
+      }
+    },
     components: {
       Slider
     }
