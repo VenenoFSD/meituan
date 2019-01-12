@@ -10,14 +10,14 @@
           <el-button type="primary"><i class="el-icon-search"></i></el-button>
           <dl class="hotPlace" v-show="isHotPlace">
             <dt>热门搜索</dt>
-            <dd v-for="item in hotPlace">{{item.name}}</dd>
+            <dd v-for="item in hotPlace"><a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{item.name}}</a></dd>
           </dl>
           <dl class="searchList" v-show="isSearchList">
-            <dd v-for="item in searchList">{{item.name}}</dd>
+            <dd v-for="item in searchList"><a :href="'/products?keyword=' + encodeURIComponent(item.name)">{{item.name}}</a></dd>
           </dl>
         </div>
         <p class="suggest">
-          <a href="javascript:" v-for="item in hotPlace">{{item.name}}</a>
+          <a :href="'/products?keyword=' + encodeURIComponent(item.name)" v-for="item in hotPlace">{{item.name}}</a>
         </p>
         <ul class="nav">
           <li>
