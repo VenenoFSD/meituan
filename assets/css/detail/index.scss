@@ -1,6 +1,6 @@
 .page-detail {
   .m-crumbs {
-    margin: 20px 0;
+    margin: 30px 0;
   }
   .m-sum-card {
     display: flex;
@@ -11,12 +11,13 @@
 
     dt {
       flex: 1;
-      padding-bottom: 5px;
+      padding: 0 20px 5px 0;
 
       h1 {
         font-size: 26px;
         font-weight: 500;
         color: #222;
+        margin-bottom: 6px;
       }
 
       .el-rate {
@@ -35,13 +36,13 @@
       > ul {
         border-top: 1px solid #e5e5e5;
         list-style: none;
-        padding-top: 5px;
+        padding-top: 10px;
         margin-top: 10px;
 
         li {
           font-size: 14px;
           color: #666;
-          padding: 7px 0;
+          padding: 5px 0;
         }
       }
     }
@@ -51,7 +52,7 @@
     }
   }
   .m-detail-list {
-    margin-top: 34px;
+    margin-top: 16px;
     h3 {
       margin: 8px 0;
     }
@@ -131,8 +132,12 @@
   .m-title {
     font-size: 20px;
     line-height: 26px;
-    margin-bottom: 8px;
-    margin-top: 40px;
+    margin-top: 60px;
+
+    h3 {
+      font-size: 20px;
+      color: #000;
+    }
   }
   .deal-need-login {
     padding: 30px 0;
