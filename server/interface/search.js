@@ -37,5 +37,25 @@ router.get('/resultsByKeywords', async ctx => {
   });
   ctx.body = status === 200 ? {count, pois} : {count: 0, pois: []};
 });
+router.get('/products', async ctx => {
+  let city = ctx.query.city || '广州';
+  let keyword = ctx.query.keyword || '旅游';
+  let {status, data: {product, more}} = await axios.get('http://cp-tools.cn/search/products', {
+    params: {
+      city,
+      keyword,
+      sign
+    }
+  });
+  ctx.body = status === 200 ? {
+    product,
+    more: ctx.isAuthenticated() ? more : [],
+    login: ctx.isAuthenticated()
+  } : {
+    product: {},
+    more: [],
+    login: false
+  }
+});
 
 export default router;

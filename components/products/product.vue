@@ -5,7 +5,7 @@
     </dt>
     <dd>
       <h3>
-        <nuxt-link to="/">{{meta.name}}</nuxt-link>
+        <nuxt-link :to="{path:'detail',query:{keyword: meta.name, type: meta.type}}">{{meta.name}}</nuxt-link>
       </h3>
       <el-rate v-model="meta.rate" disabled :colors="['#ff9900', '#ff9900', '#FF9900']"></el-rate>
       <span class="s-item-comment">{{calComment}}</span>
