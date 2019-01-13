@@ -12,7 +12,7 @@
     </el-row>
     <el-row class="m-title">
       <el-col :span="24">
-        <h3>商家团购及优惠</h3>
+        <h3 v-show="list.length">商家团购及优惠</h3>
       </el-col>
     </el-row>
     <el-row v-if="canOrder || !login">
@@ -39,15 +39,13 @@
     name: "detail",
     async asyncData (ctx) {
       let {keyword, type} = ctx.query;
-      let {status, data:{product, more:list, login}} = await ctx.$axios.get('/search/products', {
+      let {status, data: {product, more, login}} = await ctx.$axios.get('/search/products', {
         params: {
           keyword,
           city: ctx.store.state.geo.position.city
         }
       });
       if (status === 200) {
-        console.log(product);
-        console.log(list);
         return {
           type,
           keyword,
@@ -60,12 +58,12 @@
             tel: product.tel,
             photos: product.photos
           },
-          list: list.filter(item => item.photos.length).map(item => ({
+          list: more.filter(item => item.photos.length).map(item => ({
             name: item.name,
             photo: item.photos[0].url,
             ticket: item.biz_ext.ticket_ordering || '',
             deadline: item.deadline || '',
-            price: item.biz_ext.cost.length ? item.biz_ext.cost : '暂无报价'
+            price: Number(item.biz_ext.cost.length ? item.biz_ext.cost : Math.random().toString().slice(3, 5))
           })),
           login
         }

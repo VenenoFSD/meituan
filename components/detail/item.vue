@@ -33,6 +33,21 @@
     },
     methods: {
       createCart: async function () {
+        let {status, data: {code, cartNo}} = await this.$axios.post('/cart/create', {
+          params: {
+            id: Math.random().toString().slice(3, 9),
+            detail: {
+              name: this.meta.name,
+              price: this.meta.price,
+              img: this.meta.photo
+            }
+          }
+        });
+        if (status === 200 && code === 0) {
+          location.href = `/cart/?cartNo=${cartNo}`;
+        } else {
+          alert('error: create cart failed');
+        }
       }
     }
   }
