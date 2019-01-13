@@ -24,7 +24,19 @@
       }
     },
     methods: {
-      submit () {
+      async submit () {
+        let {status, data: {code, orderId}} = await this.$axios.post('/order/createOrder', {
+          cartNo: this.cartNo,
+          total: this.total
+        });
+        if (status === 200 && code === 0) {
+          this.$alert(`恭喜您，下单成功。订单号：${orderId}`, {
+            confirmButtonText: '确定',
+            callback: action => {
+              location.href = '/order';
+            }
+          });
+        }
       }
     },
     async asyncData (ctx) {
