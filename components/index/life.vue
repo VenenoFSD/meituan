@@ -28,10 +28,10 @@
           <div class="login-user" v-else>
             <p>欢迎您，{{userName}}</p>
             <ul>
-              <li>
+              <nuxt-link tag="li" to="/order">
                 <i class="el-icon-tickets"></i>
                 <p>订单</p>
-              </li>
+              </nuxt-link>
               <li>
                 <i class="el-icon-star-on"></i>
                 <p>收藏</p>
